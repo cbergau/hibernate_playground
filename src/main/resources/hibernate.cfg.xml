@@ -11,5 +11,6 @@
 
         <mapping class="de.christianbergau.hibernate.userguide.entity.Product" />
         <mapping class="de.christianbergau.hibernate.userguide.entity.Phone" />
+        <mapping class="de.christianbergau.hibernate.userguide.entity.Person" />
     </session-factory>
 </hibernate-configuration>

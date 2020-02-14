@@ -1,8 +1,6 @@
 package de.christianbergau.hibernate.userguide;
 
-import de.christianbergau.hibernate.userguide.entity.Phone;
-import de.christianbergau.hibernate.userguide.entity.PhoneType;
-import de.christianbergau.hibernate.userguide.entity.Product;
+import de.christianbergau.hibernate.userguide.entity.*;
 import de.christianbergau.hibernate.userguide.typecontributor.BitSetType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -29,6 +27,17 @@ public class App {
 
         customTypes();
         enums();
+        attributeConverter();
+    }
+
+    private static void attributeConverter() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Person aMan = new Person(1, "Christian", Gender.MALE);
+        Person aWoman = new Person(2, "Christiane", Gender.FEMALE);
+        session.saveOrUpdate(aMan);
+        session.saveOrUpdate(aWoman);
+        transaction.commit();
     }
 
     private static void enums() {
