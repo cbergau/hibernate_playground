@@ -10,5 +10,6 @@
         <property name="hibernate.connection.password">root123</property>
 
         <mapping class="de.christianbergau.hibernate.userguide.entity.Product" />
+        <mapping class="de.christianbergau.hibernate.userguide.entity.Phone" />
     </session-factory>
 </hibernate-configuration>

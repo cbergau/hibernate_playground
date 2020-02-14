@@ -1,5 +1,7 @@
 package de.christianbergau.hibernate.userguide;
 
+import de.christianbergau.hibernate.userguide.entity.Phone;
+import de.christianbergau.hibernate.userguide.entity.PhoneType;
 import de.christianbergau.hibernate.userguide.entity.Product;
 import de.christianbergau.hibernate.userguide.typecontributor.BitSetType;
 import org.hibernate.Session;
@@ -25,12 +27,23 @@ public class App {
 
         sessionFactory = new Configuration().configure().buildSessionFactory();
 
+        customTypes();
+        enums();
+    }
+
+    private static void enums() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Phone phone = new Phone(1, "123-456", PhoneType.MOBILE);
+        session.saveOrUpdate(phone);
+        transaction.commit();
+    }
+
+    private static void customTypes() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         Product product = new Product(1, BitSet.valueOf(new byte[]{1, 2, 3}));
-        session.save(product);
+        session.saveOrUpdate(product);
         transaction.commit();
-
-
     }
 }
