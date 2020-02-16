@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Nationalized;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -45,5 +46,6 @@ public class Product {
      * Because the mapping between the Java 8 Date/Time classes and the SQL types is implicit,
      * there is not need to specify the @Temporal annotation.
      */
+    @UpdateTimestamp
     private LocalDateTime lastUpdated;
 }

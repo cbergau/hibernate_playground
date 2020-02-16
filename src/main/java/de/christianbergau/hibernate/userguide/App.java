@@ -51,7 +51,6 @@ public class App {
         product.setWarranty("My Warranty");
         product.setBitSet(BitSet.valueOf(new byte[]{1, 2, 3}));
         product.setAddedOn(new Date());
-        product.setLastUpdated(LocalDateTime.now());
 
         session.saveOrUpdate(product);
 
