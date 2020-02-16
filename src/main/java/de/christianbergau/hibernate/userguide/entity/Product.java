@@ -1,5 +1,6 @@
 package de.christianbergau.hibernate.userguide.entity;
 
+import de.christianbergau.hibernate.userguide.generators.FunctionCreationTimestamp;
 import de.christianbergau.hibernate.userguide.typecontributor.BitSetType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -48,4 +49,7 @@ public class Product {
      */
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
+
+    @FunctionCreationTimestamp
+    private Date anotherLastUpdated;
 }

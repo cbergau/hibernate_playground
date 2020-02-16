@@ -36,7 +36,6 @@ public class App {
         attributeConverterWithEntity();
         printPhotoUsingAttributeConverterWithEntity();
         printPhotoUsingAttributeConverterWithEntityParameter();
-        readProduct();
         writeProduct();
         readProduct();
     }
@@ -62,8 +61,7 @@ public class App {
         Transaction transaction = session.beginTransaction();
 
         Product product = session
-                .createQuery("SELECT p from Product p WHERE id = :id", Product.class)
-                .setParameter("id", 1)
+                .createQuery("SELECT p from Product p", Product.class)
                 .getSingleResult();
 
         System.out.println(product);
