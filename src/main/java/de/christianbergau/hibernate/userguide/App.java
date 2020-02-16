@@ -9,7 +9,6 @@ import org.hibernate.boot.MetadataBuilder;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.engine.jdbc.ClobProxy;
 import org.hibernate.metamodel.spi.MetamodelImplementor;
 import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
@@ -36,10 +35,25 @@ public class App {
         printPhotoUsingAttributeConverterWithEntity();
         printPhotoUsingAttributeConverterWithEntityParameter();
         persistClob();
-        readClob();
+        readProduct();
+        writeNationalizedData();
+        readProduct();
     }
 
-    private static void readClob() {
+    private static void writeNationalizedData() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        Product product = new Product();
+        product.setId(1);
+        product.setDescription("안녕하세요");
+
+        session.saveOrUpdate(product);
+
+        transaction.commit();
+    }
+
+    private static void readProduct() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -133,7 +147,7 @@ public class App {
     private static void customTypes() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Product product = new Product(1, BitSet.valueOf(new byte[]{1, 2, 3}), "");
+        Product product = new Product(1, BitSet.valueOf(new byte[]{1, 2, 3}), "", "");
         session.saveOrUpdate(product);
         transaction.commit();
     }

@@ -4,6 +4,7 @@ import de.christianbergau.hibernate.userguide.typecontributor.BitSetType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Nationalized;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
@@ -32,4 +33,7 @@ public class Product {
 
     @Lob
     private String warranty;
+
+    @Nationalized
+    private String description;
 }
