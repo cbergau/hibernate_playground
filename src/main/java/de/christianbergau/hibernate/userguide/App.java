@@ -117,7 +117,7 @@ public class App {
     private static void savePerson() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Person person = new Person(1, "Christian", "Bergau", "m1", "m2", "m3", "m4", "m5", "", Gender.MALE);
+        Person person = new Person(1, "Christian", "Bergau", "m1", "m2", "m3", "m4", "m5", "mypw".getBytes(), "", Gender.MALE);
         session.saveOrUpdate(person);
         session.flush();
         transaction.commit();

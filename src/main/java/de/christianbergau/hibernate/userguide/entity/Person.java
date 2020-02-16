@@ -4,6 +4,7 @@ import de.christianbergau.hibernate.userguide.converter.GenderConverter;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnTransformer;
 import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
 
@@ -33,6 +34,12 @@ public class Person {
     private String middleName4;
 
     private String middleName5;
+
+    @ColumnTransformer(
+            read = "AES_DECRYPT(password, 'mykey')",
+            write = "AES_ENCRYPT(?, 'mykey')"
+    )
+    private byte[] password;
 
     @Generated(value = GenerationTime.ALWAYS)
     @Column(columnDefinition =
