@@ -14,7 +14,10 @@ import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.Type;
 
+import java.time.LocalDateTime;
 import java.util.BitSet;
+import java.util.Calendar;
+import java.util.Date;
 
 public class App {
     private static SessionFactory sessionFactory;
@@ -28,25 +31,26 @@ public class App {
 
         sessionFactory = new Configuration().configure().buildSessionFactory();
 
-        customTypes();
         enums();
         attributeConverter();
         attributeConverterWithEntity();
         printPhotoUsingAttributeConverterWithEntity();
         printPhotoUsingAttributeConverterWithEntityParameter();
-        persistClob();
         readProduct();
-        writeNationalizedData();
+        writeProduct();
         readProduct();
     }
 
-    private static void writeNationalizedData() {
+    private static void writeProduct() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
         Product product = new Product();
         product.setId(1);
         product.setDescription("안녕하세요");
+        product.setWarranty("My Warranty");
+        product.setBitSet(BitSet.valueOf(new byte[]{1, 2, 3}));
+        product.setAddedOn(new Date());
 
         session.saveOrUpdate(product);
 
@@ -63,20 +67,6 @@ public class App {
                 .getSingleResult();
 
         System.out.println(product);
-
-        transaction.commit();
-    }
-
-    private static void persistClob() {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-
-        Product product = new Product();
-        product.setId(1);
-        product.setBitSet(BitSet.valueOf(new byte[] {1, 2}));
-        product.setWarranty("My Product Warranty");
-
-        session.saveOrUpdate(product);
 
         transaction.commit();
     }
@@ -141,14 +131,6 @@ public class App {
         Transaction transaction = session.beginTransaction();
         Phone phone = new Phone(1, "123-456", PhoneType.MOBILE);
         session.saveOrUpdate(phone);
-        transaction.commit();
-    }
-
-    private static void customTypes() {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        Product product = new Product(1, BitSet.valueOf(new byte[]{1, 2, 3}), "", "");
-        session.saveOrUpdate(product);
         transaction.commit();
     }
 }

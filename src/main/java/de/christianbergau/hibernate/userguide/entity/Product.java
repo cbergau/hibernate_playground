@@ -9,7 +9,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
-import java.sql.Clob;
+import java.util.Date;
 import java.util.BitSet;
 
 @Entity(name = "Product")
@@ -36,4 +36,7 @@ public class Product {
 
     @Nationalized
     private String description;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date addedOn;
 }
