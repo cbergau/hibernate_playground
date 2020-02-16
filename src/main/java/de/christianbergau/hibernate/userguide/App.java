@@ -2,6 +2,7 @@ package de.christianbergau.hibernate.userguide;
 
 import de.christianbergau.hibernate.userguide.entity.*;
 import de.christianbergau.hibernate.userguide.typecontributor.BitSetType;
+import jdk.vm.ci.meta.Local;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -51,6 +52,7 @@ public class App {
         product.setWarranty("My Warranty");
         product.setBitSet(BitSet.valueOf(new byte[]{1, 2, 3}));
         product.setAddedOn(new Date());
+        product.setLastUpdated(LocalDateTime.now());
 
         session.saveOrUpdate(product);
 

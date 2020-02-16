@@ -9,6 +9,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.BitSet;
 
@@ -39,4 +40,10 @@ public class Product {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date addedOn;
+
+    /**
+     * Because the mapping between the Java 8 Date/Time classes and the SQL types is implicit,
+     * there is not need to specify the @Temporal annotation.
+     */
+    private LocalDateTime lastUpdated;
 }
