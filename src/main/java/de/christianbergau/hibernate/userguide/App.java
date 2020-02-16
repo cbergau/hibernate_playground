@@ -9,6 +9,7 @@ import org.hibernate.boot.MetadataBuilder;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.engine.jdbc.ClobProxy;
 import org.hibernate.metamodel.spi.MetamodelImplementor;
 import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
@@ -34,6 +35,36 @@ public class App {
         attributeConverterWithEntity();
         printPhotoUsingAttributeConverterWithEntity();
         printPhotoUsingAttributeConverterWithEntityParameter();
+        persistClob();
+        readClob();
+    }
+
+    private static void readClob() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        Product product = session
+                .createQuery("SELECT p from Product p WHERE id = :id", Product.class)
+                .setParameter("id", 1)
+                .getSingleResult();
+
+        System.out.println(product);
+
+        transaction.commit();
+    }
+
+    private static void persistClob() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        Product product = new Product();
+        product.setId(1);
+        product.setBitSet(BitSet.valueOf(new byte[] {1, 2}));
+        product.setWarranty("My Product Warranty");
+
+        session.saveOrUpdate(product);
+
+        transaction.commit();
     }
 
     private static void printPhotoUsingAttributeConverterWithEntityParameter() {
@@ -102,7 +133,7 @@ public class App {
     private static void customTypes() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Product product = new Product(1, BitSet.valueOf(new byte[]{1, 2, 3}));
+        Product product = new Product(1, BitSet.valueOf(new byte[]{1, 2, 3}), "");
         session.saveOrUpdate(product);
         transaction.commit();
     }

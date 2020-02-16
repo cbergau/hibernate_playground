@@ -7,10 +7,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.sql.Clob;
 import java.util.BitSet;
 
 @Entity(name = "Product")
@@ -31,4 +29,7 @@ public class Product {
     @Type(type = "bitset")
     @Column(name = "bitset")
     private BitSet bitSet;
+
+    @Lob
+    private String warranty;
 }
