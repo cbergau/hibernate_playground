@@ -28,6 +28,32 @@ public class App {
         customTypes();
         enums();
         attributeConverter();
+        attributeConverterWithEntity();
+        printPhotoUsingAttributeConverterWithEntity();
+    }
+
+    private static void printPhotoUsingAttributeConverterWithEntity() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        String queryString = "select p " +
+                "from Photo p " +
+                "where upper(caption) = upper(:caption) ";
+        Photo photo = session.createQuery(queryString, Photo.class)
+                .setParameter("caption", "My Holidays 2020")
+                .getSingleResult();
+        System.out.println(photo);
+        transaction.commit();
+    }
+
+    private static void attributeConverterWithEntity() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+        Photo photo = new Photo();
+        photo.setId(1);
+        photo.setCaption(new Caption("My Holidays 2020"));
+        photo.setName("2020");
+        session.saveOrUpdate(photo);
+        transaction.commit();
     }
 
     private static void attributeConverter() {
