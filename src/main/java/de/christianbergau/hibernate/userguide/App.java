@@ -2,7 +2,6 @@ package de.christianbergau.hibernate.userguide;
 
 import de.christianbergau.hibernate.userguide.entity.*;
 import de.christianbergau.hibernate.userguide.typecontributor.BitSetType;
-import jdk.vm.ci.meta.Local;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -17,7 +16,6 @@ import org.hibernate.type.Type;
 
 import java.time.LocalDateTime;
 import java.util.BitSet;
-import java.util.Calendar;
 import java.util.Date;
 
 public class App {
@@ -33,7 +31,8 @@ public class App {
         sessionFactory = new Configuration().configure().buildSessionFactory();
 
         enums();
-        attributeConverter();
+        savePerson();
+        loadPerson();
         attributeConverterWithEntity();
         printPhotoUsingAttributeConverterWithEntity();
         printPhotoUsingAttributeConverterWithEntityParameter();
@@ -118,14 +117,21 @@ public class App {
         transaction.commit();
     }
 
-    private static void attributeConverter() {
+    private static void savePerson() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Person aMan = new Person(1, "Christian", Gender.MALE);
-        Person aWoman = new Person(2, "Christiane", Gender.FEMALE);
-        session.saveOrUpdate(aMan);
-        session.saveOrUpdate(aWoman);
+        Person person = new Person(1, "Christian", "Bergau", "m1", "m2", "m3", "m4", "m5", "", Gender.MALE);
+        session.saveOrUpdate(person);
+        session.flush();
         transaction.commit();
+    }
+
+    private static void loadPerson() {
+        Session session = sessionFactory.openSession();
+        Person person = session.createQuery("SELECT p from Person p where id = :id", Person.class)
+                .setParameter("id", 1)
+                .getSingleResult();
+        System.out.println(person);
     }
 
     private static void enums() {
