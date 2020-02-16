@@ -9,7 +9,10 @@ import org.hibernate.boot.MetadataBuilder;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.metamodel.spi.MetamodelImplementor;
+import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
+import org.hibernate.type.Type;
 
 import java.util.BitSet;
 
@@ -30,6 +33,28 @@ public class App {
         attributeConverter();
         attributeConverterWithEntity();
         printPhotoUsingAttributeConverterWithEntity();
+        printPhotoUsingAttributeConverterWithEntityParameter();
+    }
+
+    private static void printPhotoUsingAttributeConverterWithEntityParameter() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        MetamodelImplementor metamodelImplementor = (MetamodelImplementor) sessionFactory.getMetamodel();
+        Type captionType = metamodelImplementor
+                .entityPersister(Photo.class.getName())
+                .getPropertyType("caption");
+
+        String queryString = "select p " +
+                "from Photo p " +
+                "where upper(caption) = upper(:caption) ";
+        Photo photo = (Photo) session.createQuery(queryString, Photo.class)
+                .unwrap(Query.class)
+                .setParameter("caption", new Caption("My Holidays 2020"), captionType)
+                .getSingleResult();
+        System.out.println(photo);
+
+        transaction.commit();
     }
 
     private static void printPhotoUsingAttributeConverterWithEntity() {
