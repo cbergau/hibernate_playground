@@ -38,6 +38,21 @@ public class App {
         printPhotoUsingAttributeConverterWithEntityParameter();
         writeProduct();
         readProduct();
+        readWriteCity();
+    }
+
+    private static void readWriteCity() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        City city = new City();
+        city.setId(1L);
+        city.setName("My City");
+        city.setCoordinates(new GPS(45.0, 23.0));
+
+        session.saveOrUpdate(city);
+
+        transaction.commit();
     }
 
     private static void writeProduct() {

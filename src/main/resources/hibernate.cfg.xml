@@ -13,5 +13,7 @@
         <mapping class="de.christianbergau.hibernate.userguide.entity.Phone" />
         <mapping class="de.christianbergau.hibernate.userguide.entity.Person" />
         <mapping class="de.christianbergau.hibernate.userguide.entity.Photo" />
+        <mapping class="de.christianbergau.hibernate.userguide.entity.City" />
+        <mapping class="de.christianbergau.hibernate.userguide.entity.GPS" />
     </session-factory>
 </hibernate-configuration>
