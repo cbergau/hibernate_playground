@@ -1,4 +1,4 @@
-package de.christianbergau.hibernate.userguide.typecontributor;
+package de.christianbergau.hibernate.playground.typecontributor;
 
 import org.hibernate.dialect.Dialect;
 import org.hibernate.type.AbstractSingleColumnStandardBasicType;

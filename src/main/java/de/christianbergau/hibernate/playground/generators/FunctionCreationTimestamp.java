@@ -1,4 +1,4 @@
-package de.christianbergau.hibernate.userguide.generators;
+package de.christianbergau.hibernate.playground.generators;
 
 import org.hibernate.annotations.ValueGenerationType;
 

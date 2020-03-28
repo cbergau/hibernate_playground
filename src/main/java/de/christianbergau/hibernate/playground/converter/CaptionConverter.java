@@ -1,6 +1,6 @@
-package de.christianbergau.hibernate.userguide.converter;
+package de.christianbergau.hibernate.playground.converter;
 
-import de.christianbergau.hibernate.userguide.entity.Caption;
+import de.christianbergau.hibernate.playground.entity.Caption;
 
 import javax.persistence.AttributeConverter;
 

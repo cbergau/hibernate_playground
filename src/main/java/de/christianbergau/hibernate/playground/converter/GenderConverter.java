@@ -1,6 +1,6 @@
-package de.christianbergau.hibernate.userguide.converter;
+package de.christianbergau.hibernate.playground.converter;
 
-import de.christianbergau.hibernate.userguide.entity.Gender;
+import de.christianbergau.hibernate.playground.entity.Gender;
 
 import javax.persistence.AttributeConverter;
 

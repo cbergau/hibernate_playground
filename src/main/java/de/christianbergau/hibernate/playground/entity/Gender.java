@@ -1,4 +1,4 @@
-package de.christianbergau.hibernate.userguide.entity;
+package de.christianbergau.hibernate.playground.entity;
 
 public enum Gender {
     MALE('M'),

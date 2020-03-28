@@ -1,7 +1,7 @@
-package de.christianbergau.hibernate.userguide;
+package de.christianbergau.hibernate.playground;
 
-import de.christianbergau.hibernate.userguide.entity.*;
-import de.christianbergau.hibernate.userguide.typecontributor.BitSetType;
+import de.christianbergau.hibernate.playground.entity.*;
+import de.christianbergau.hibernate.playground.typecontributor.BitSetType;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -14,7 +14,6 @@ import org.hibernate.query.Query;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.Type;
 
-import java.time.LocalDateTime;
 import java.util.BitSet;
 import java.util.Date;
 

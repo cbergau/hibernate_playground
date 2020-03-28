@@ -9,11 +9,11 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">root123</property>
 
-        <mapping class="de.christianbergau.hibernate.userguide.entity.Product" />
-        <mapping class="de.christianbergau.hibernate.userguide.entity.Phone" />
-        <mapping class="de.christianbergau.hibernate.userguide.entity.Person" />
-        <mapping class="de.christianbergau.hibernate.userguide.entity.Photo" />
-        <mapping class="de.christianbergau.hibernate.userguide.entity.City" />
-        <mapping class="de.christianbergau.hibernate.userguide.entity.GPS" />
+        <mapping class="de.christianbergau.hibernate.playground.entity.Product" />
+        <mapping class="de.christianbergau.hibernate.playground.entity.Phone" />
+        <mapping class="de.christianbergau.hibernate.playground.entity.Person" />
+        <mapping class="de.christianbergau.hibernate.playground.entity.Photo" />
+        <mapping class="de.christianbergau.hibernate.playground.entity.City" />
+        <mapping class="de.christianbergau.hibernate.playground.entity.GPS" />
     </session-factory>
 </hibernate-configuration>

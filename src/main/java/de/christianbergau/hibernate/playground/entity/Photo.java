@@ -1,6 +1,6 @@
-package de.christianbergau.hibernate.userguide.entity;
+package de.christianbergau.hibernate.playground.entity;
 
-import de.christianbergau.hibernate.userguide.converter.CaptionConverter;
+import de.christianbergau.hibernate.playground.converter.CaptionConverter;
 import lombok.Data;
 import lombok.ToString;
 

@@ -1,7 +1,7 @@
-package de.christianbergau.hibernate.userguide.entity;
+package de.christianbergau.hibernate.playground.entity;
 
-import de.christianbergau.hibernate.userguide.generators.FunctionCreationTimestamp;
-import de.christianbergau.hibernate.userguide.typecontributor.BitSetType;
+import de.christianbergau.hibernate.playground.generators.FunctionCreationTimestamp;
+import de.christianbergau.hibernate.playground.typecontributor.BitSetType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
