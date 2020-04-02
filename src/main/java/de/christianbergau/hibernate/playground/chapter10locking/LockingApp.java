@@ -15,7 +15,7 @@ import org.hibernate.cfg.Configuration;
 public class LockingApp {
     private static SessionFactory sessionFactory;
 
-    public static void main(String... args) throws Exception {
+    public static void main(String... args) {
         sessionFactory = new Configuration().configure().buildSessionFactory();
 
         OptimisticLockedPerson person = new OptimisticLockedPerson();
