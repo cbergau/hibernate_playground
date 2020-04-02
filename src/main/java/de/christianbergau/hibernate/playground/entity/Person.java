@@ -41,19 +41,6 @@ public class Person {
     )
     private byte[] password;
 
-    @Generated(value = GenerationTime.ALWAYS)
-    @Column(columnDefinition =
-            "AS CONCAT(" +
-                    "	COALESCE(firstName, ''), " +
-                    "	COALESCE(' ' + middleName1, ''), " +
-                    "	COALESCE(' ' + middleName2, ''), " +
-                    "	COALESCE(' ' + middleName3, ''), " +
-                    "	COALESCE(' ' + middleName4, ''), " +
-                    "	COALESCE(' ' + middleName5, ''), " +
-                    "	COALESCE(' ' + lastName, '') " +
-                    ")")
-    private String fullName;
-
     @Convert(converter = GenderConverter.class)
     public Gender gender;
 }

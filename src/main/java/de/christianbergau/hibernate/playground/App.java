@@ -38,6 +38,23 @@ public class App {
         writeProduct();
         readProduct();
         readWriteCity();
+        optimisticLockingWithVersion();
+    }
+
+    private static void optimisticLockingWithVersion() {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        OptimisticLockedEntityWithVersion entity = new OptimisticLockedEntityWithVersion();
+        entity.setValue("hi");
+
+        session.saveOrUpdate(entity);
+
+        entity.setValue("hi 1");
+
+        session.saveOrUpdate(entity);
+
+        transaction.commit();
     }
 
     private static void readWriteCity() {
@@ -131,7 +148,7 @@ public class App {
     private static void savePerson() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Person person = new Person(1, "Christian", "Bergau", "m1", "m2", "m3", "m4", "m5", "mypw".getBytes(), "", Gender.MALE);
+        Person person = new Person(1, "Christian", "Bergau", "m1", "m2", "m3", "m4", "m5", "mypw".getBytes(), Gender.MALE);
         session.saveOrUpdate(person);
         session.flush();
         transaction.commit();

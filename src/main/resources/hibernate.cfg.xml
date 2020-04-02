@@ -3,11 +3,13 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost/test</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">root123</property>
+        <property name="hibernate.connection.password">rootpw</property>
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
+        <property name="hibernate.hibernate.hbm2ddl.auto">create-drop</property>
 
         <mapping class="de.christianbergau.hibernate.playground.entity.Product" />
         <mapping class="de.christianbergau.hibernate.playground.entity.Phone" />
@@ -15,5 +17,6 @@
         <mapping class="de.christianbergau.hibernate.playground.entity.Photo" />
         <mapping class="de.christianbergau.hibernate.playground.entity.City" />
         <mapping class="de.christianbergau.hibernate.playground.entity.GPS" />
+        <mapping class="de.christianbergau.hibernate.playground.entity.OptimisticLockedEntityWithVersion" />
     </session-factory>
 </hibernate-configuration>
