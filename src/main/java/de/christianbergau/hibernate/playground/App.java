@@ -45,14 +45,26 @@ public class App {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        OptimisticLockedEntityWithVersion entity = new OptimisticLockedEntityWithVersion();
+        OptimisticLockedEntityWithVersionOfLong entity = new OptimisticLockedEntityWithVersionOfLong();
         entity.setValue("hi");
 
+        OptimisticLockedEntityWithVersionOfInstant ofInstant = new OptimisticLockedEntityWithVersionOfInstant();
+        ofInstant.setValue("hi");
+
+        OptimisticLockedEntityWithVersionOfTimestamp ofTimestamp = new OptimisticLockedEntityWithVersionOfTimestamp();
+        ofTimestamp.setValue("hi");
+
         session.saveOrUpdate(entity);
+        session.saveOrUpdate(ofInstant);
+        session.saveOrUpdate(ofTimestamp);
 
         entity.setValue("hi 1");
+        ofInstant.setValue("hi 1");
+        ofTimestamp.setValue("hi 1");
 
         session.saveOrUpdate(entity);
+        session.saveOrUpdate(ofInstant);
+        session.saveOrUpdate(ofTimestamp);
 
         transaction.commit();
     }

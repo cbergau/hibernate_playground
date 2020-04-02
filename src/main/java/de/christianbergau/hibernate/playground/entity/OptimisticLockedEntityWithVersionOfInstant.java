@@ -3,18 +3,19 @@ package de.christianbergau.hibernate.playground.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.Instant;
 
-@Entity(name = "OptimisticLockedEntityWithVersion")
-@Table(name = "OptimisticLockedEntityWithVersion")
+@Entity(name = "OptimisticLockedEntityWithVersionOfInstant")
+@Table(name = "OptimisticLockedEntityWithVersionOfInstant")
 @Data
-public class OptimisticLockedEntityWithVersion {
+public class OptimisticLockedEntityWithVersionOfInstant {
 
     @Id
     @GeneratedValue
     private Long id;
 
     @Version
-    private Long version;
+    private Instant version;
 
     @Column(name = "value")
     private String value;

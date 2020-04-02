@@ -17,6 +17,8 @@
         <mapping class="de.christianbergau.hibernate.playground.entity.Photo" />
         <mapping class="de.christianbergau.hibernate.playground.entity.City" />
         <mapping class="de.christianbergau.hibernate.playground.entity.GPS" />
-        <mapping class="de.christianbergau.hibernate.playground.entity.OptimisticLockedEntityWithVersion" />
+        <mapping class="de.christianbergau.hibernate.playground.entity.OptimisticLockedEntityWithVersionOfLong" />
+        <mapping class="de.christianbergau.hibernate.playground.entity.OptimisticLockedEntityWithVersionOfTimestamp" />
+        <mapping class="de.christianbergau.hibernate.playground.entity.OptimisticLockedEntityWithVersionOfInstant" />
     </session-factory>
 </hibernate-configuration>
