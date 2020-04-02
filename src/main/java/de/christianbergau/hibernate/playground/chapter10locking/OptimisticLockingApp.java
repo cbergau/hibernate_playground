@@ -7,16 +7,14 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 /**
- * Demonstration of Optimistic and Pessimistic Locking with Hibernate 5.4
+ * Demonstration of Optimistic  Locking with Hibernate 5.4
  *
  * @see "https://docs.jboss.org/hibernate/orm/5.4/userguide/html_single/Hibernate_User_Guide.html#locking"
  */
 @Log4j2
-public class LockingApp {
-    private static SessionFactory sessionFactory;
-
+public class OptimisticLockingApp {
     public static void main(String... args) {
-        sessionFactory = new Configuration().configure().buildSessionFactory();
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 
         OptimisticLockedPerson person = new OptimisticLockedPerson();
         person.setName("Chris");

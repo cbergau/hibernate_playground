@@ -22,5 +22,6 @@
         <mapping class="de.christianbergau.hibernate.playground.entity.OptimisticLockedEntityWithVersionOfTimestamp" />
         <mapping class="de.christianbergau.hibernate.playground.entity.OptimisticLockedEntityWithVersionOfInstant" />
         <mapping class="de.christianbergau.hibernate.playground.chapter10locking.OptimisticLockedPerson" />
+        <mapping class="de.christianbergau.hibernate.playground.chapter10locking.PessimisticLockedPerson" />
     </session-factory>
 </hibernate-configuration>
